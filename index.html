@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Valtaris Security Group | Private security for businesses and individuals across the UK</title>
+<meta name="description" content="Valtaris Security Group Ltd provides SIA-licensed manned guarding, door supervision, close protection, mobile patrols and residential security across England, Scotland, Wales and Northern Ireland.">
+<meta name="theme-color" content="#0E1A2B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 46'%3E%3Cpath d='M20 1 38 7v15c0 11-7.6 19.6-18 23C9.6 41.6 2 33 2 22V7z' fill='%230E1A2B'/%3E%3Cpath d='M11 13h5l4 13 4-13h5l-7 20h-4z' fill='%23B4924F'/%3E%3C/svg%3E">
+<style>
+:root{
+  --midnight:#0E1A2B;
+  --navy:#16263D;
+  --slate:#42536A;
+  --steel:#8C98A8;
+  --brass:#B4924F;
+  --brass-light:#D4B77E;
+  --mist:#F2F3F1;
+  --white:#FFFFFF;
+  --line:#D9DDE2;
+  --ok:#2E7D5B;
+  --err:#B3261E;
+  --display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --body:"IBM Plex Sans",-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --wrap:1180px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;font-family:var(--body);font-size:1.0625rem;line-height:1.6;color:var(--midnight);background:var(--white);-webkit-font-smoothing:antialiased}
+img,svg{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--brass);outline-offset:3px}
+.wrap{width:min(100% - 2.5rem,var(--wrap));margin-inline:auto}
+h1,h2,h3{font-family:var(--display);font-stretch:75%;font-weight:800;line-height:1.02;letter-spacing:-.01em;margin:0}
+h2{font-size:clamp(2.2rem,4.4vw,3.6rem)}
+h3{font-size:1.5rem;font-stretch:85%;font-weight:700;line-height:1.15}
+p{margin:0}
+.lede{font-size:1.1875rem;color:var(--slate);max-width:60ch}
+.skip{position:absolute;left:-999px;top:0;background:var(--brass);color:var(--midnight);padding:.6rem 1rem;z-index:100}
+.skip:focus{left:1rem}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font:600 1rem/1 var(--body);padding:1rem 1.5rem;border-radius:2px;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.btn-brass{background:var(--brass);color:var(--midnight)}
+.btn-brass:hover{background:var(--brass-light)}
+.btn-ghost{border-color:rgba(255,255,255,.35);color:var(--white)}
+.btn-ghost:hover{border-color:var(--white)}
+
+/* Header */
+.site-header{position:sticky;top:0;z-index:50;background:var(--midnight);color:var(--white);border-bottom:1px solid rgba(255,255,255,.08)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+.brand{display:flex;align-items:center;gap:.75rem;text-decoration:none}
+.brand svg{width:34px;height:40px}
+.brand-name{font-family:var(--display);font-stretch:80%;font-weight:800;font-size:1.35rem;letter-spacing:.06em;line-height:1}
+.brand-name small{display:block;font-family:var(--body);font-stretch:100%;font-weight:500;font-size:.68rem;letter-spacing:.14em;color:var(--steel);margin-top:.25rem}
+.nav-links{display:flex;align-items:center;gap:2rem;list-style:none;margin:0;padding:0}
+.nav-links a{text-decoration:none;font-size:.95rem;color:#C9D1DB}
+.nav-links a:hover{color:var(--white)}
+.nav-links .btn{padding:.7rem 1.1rem;font-size:.92rem;color:var(--midnight)}
+.menu-btn{display:none;background:none;border:0;color:var(--white);padding:.5rem;cursor:pointer}
+@media (max-width:900px){
+  .menu-btn{display:block}
+  .nav-links{position:absolute;top:72px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--midnight);padding:.5rem 1.25rem 1.5rem;display:none;border-bottom:1px solid rgba(255,255,255,.1)}
+  .nav-links.open{display:flex}
+  .nav-links li a{display:block;padding:.9rem 0;border-bottom:1px solid rgba(255,255,255,.08)}
+  .nav-links .btn{margin-top:1rem;display:flex}
+}
+
+/* Hero */
+.hero{background:var(--midnight);color:var(--white);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:
+  repeating-linear-gradient(90deg,rgba(255,255,255,.035) 0 1px,transparent 1px 120px);pointer-events:none}
+.hero-grid{position:relative;display:grid;grid-template-columns:1.25fr .9fr;gap:4rem;align-items:center;padding:6rem 0 5.5rem}
+.hero h1{font-size:clamp(3rem,7.6vw,6.4rem);font-stretch:68%;font-weight:900;line-height:.92;letter-spacing:-.015em}
+.hero p.lede{color:#C3CCD7;margin-top:1.75rem}
+.hero-actions{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2.25rem}
+.trust{display:flex;flex-wrap:wrap;gap:.6rem 1.75rem;margin-top:2.75rem;padding-top:1.75rem;border-top:1px solid rgba(255,255,255,.12);font-size:.92rem;color:#AEB9C6}
+.trust span{display:flex;align-items:center;gap:.5rem}
+.trust svg{width:16px;height:16px;color:var(--brass)}
+
+/* Duty log: the hero's one bold element */
+.duty{background:var(--navy);border:1px solid rgba(180,146,79,.45);border-radius:4px;padding:1.75rem;position:relative}
+.duty-head{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding-bottom:1.1rem;border-bottom:1px solid rgba(255,255,255,.1)}
+.duty-head p{font-size:.9rem;color:#AEB9C6}
+.status{display:inline-flex;align-items:center;gap:.5rem;font-size:.85rem;font-weight:600;color:#9FD8BC}
+.status i{width:9px;height:9px;border-radius:50%;background:#4CC38A;box-shadow:0 0 0 0 rgba(76,195,138,.6);animation:pulse 2.4s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 10px rgba(76,195,138,0)}100%{box-shadow:0 0 0 0 rgba(76,195,138,0)}}
+.clock{font-family:var(--display);font-stretch:62%;font-weight:700;font-size:clamp(4rem,9vw,6rem);line-height:1;letter-spacing:.01em;margin:1.4rem 0 .3rem;font-variant-numeric:tabular-nums;color:var(--brass-light)}
+.clock-sub{color:#AEB9C6;font-size:.95rem}
+.shift{margin-top:1.5rem;display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem}
+.shift div{padding:.75rem .7rem;border:1px solid rgba(255,255,255,.1);border-radius:2px;font-size:.82rem;color:#AEB9C6}
+.shift div strong{display:block;color:var(--white);font-weight:600;font-size:.95rem}
+.shift div.now{border-color:var(--brass);background:rgba(180,146,79,.12)}
+.duty-foot{margin-top:1.4rem;font-size:.92rem;color:#C3CCD7}
+.duty-foot a{color:var(--brass-light);font-weight:600}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr;gap:3rem;padding:4rem 0}}
+@media (prefers-reduced-motion:reduce){.status i{animation:none}html{scroll-behavior:auto}}
+
+/* Sections */
+section{padding:6rem 0}
+.sec-head{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:end;margin-bottom:3.5rem}
+@media (max-width:800px){.sec-head{grid-template-columns:1fr;gap:1.25rem}section{padding:4.5rem 0}}
+
+/* Photos: an <img> sits over a built-in illustration and is removed if the file is missing */
+.ph{position:relative;margin:0;overflow:hidden;background:var(--navy);border-radius:2px}
+.ph > svg,.ph > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ph > img{z-index:1}
+.ph figcaption{position:absolute;left:1rem;bottom:1rem;z-index:2;background:rgba(14,26,43,.88);color:var(--white);font-size:.92rem;font-weight:500;padding:.55rem .85rem;border-left:3px solid var(--brass)}
+.on-post{background:var(--mist)}
+.mosaic{display:grid;grid-template-columns:1.6fr 1fr;grid-template-rows:1fr 1fr;gap:1rem;height:clamp(440px,50vw,620px)}
+.mosaic .big{grid-row:span 2}
+@media (max-width:800px){.mosaic{grid-template-columns:1fr;grid-template-rows:none;height:auto}.mosaic .big{grid-row:auto}.mosaic .ph{aspect-ratio:4/3}}
+.who-card .ph{aspect-ratio:16/9;margin:-2.5rem -2.5rem 2rem}
+@media (max-width:800px){.who-card .ph{margin:-2rem -1.5rem 1.75rem}}
+
+/* Services */
+.services{background:var(--white)}
+.svc-list{display:grid;grid-template-columns:repeat(2,1fr);border-top:2px solid var(--midnight)}
+.svc{display:grid;grid-template-columns:48px 1fr;gap:1.25rem;padding:2rem 2rem 2rem 0;border-bottom:1px solid var(--line)}
+.svc:nth-child(even){padding-left:2rem;padding-right:0;border-left:1px solid var(--line)}
+.svc svg{width:40px;height:40px;color:var(--brass)}
+.svc p{color:var(--slate);margin-top:.5rem;font-size:1rem}
+@media (max-width:800px){.svc-list{grid-template-columns:1fr}.svc,.svc:nth-child(even){padding:1.75rem 0;border-left:0}}
+
+/* Who we protect */
+.who{background:var(--mist)}
+.who-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.who-card{background:var(--white);padding:2.5rem;border-top:4px solid var(--midnight)}
+.who-card.alt{border-top-color:var(--brass)}
+.who-card h3{font-size:2rem;font-stretch:72%;font-weight:800}
+.who-card > p{color:var(--slate);margin:1rem 0 1.5rem}
+.who-card ul{list-style:none;margin:0;padding:0}
+.who-card li{padding:.75rem 0;border-top:1px solid var(--line);display:flex;gap:.75rem;font-size:1rem}
+.who-card li::before{content:"";flex:none;width:8px;height:8px;margin-top:.55rem;background:var(--brass);transform:rotate(45deg)}
+@media (max-width:800px){.who-grid{grid-template-columns:1fr}.who-card{padding:2rem 1.5rem}}
+
+/* Process */
+.process{background:var(--white)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;counter-reset:step;list-style:none;margin:0;padding:0}
+.steps li{padding:0 1.75rem 0 0;position:relative}
+.steps li::before{counter-increment:step;content:counter(step);display:flex;align-items:center;justify-content:center;width:52px;height:52px;border:2px solid var(--midnight);border-radius:50%;font:800 1.4rem/1 var(--display);font-stretch:75%;background:var(--white);position:relative;z-index:1;margin-bottom:1.5rem}
+.steps li::after{content:"";position:absolute;top:26px;left:52px;right:0;height:2px;background:var(--line)}
+.steps li:last-child::after{display:none}
+.steps p{color:var(--slate);margin-top:.5rem;font-size:1rem}
+@media (max-width:900px){.steps{grid-template-columns:1fr 1fr;gap:2.5rem 1.5rem}.steps li::after{display:none}}
+@media (max-width:520px){.steps{grid-template-columns:1fr}}
+
+/* Coverage */
+.coverage{background:var(--midnight);color:var(--white)}
+.coverage .lede{color:#C3CCD7}
+.regions{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.12)}
+.region{background:var(--midnight);padding:2rem 1.75rem}
+.region h3{color:var(--brass-light);font-size:1.75rem;font-stretch:70%;font-weight:800}
+.region p{color:#AEB9C6;font-size:.98rem;margin-top:.75rem}
+@media (max-width:900px){.regions{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.regions{grid-template-columns:1fr}}
+
+/* Standards */
+.standards{background:var(--white)}
+.std-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2.5rem}
+.std svg{width:36px;height:36px;color:var(--midnight);margin-bottom:1rem}
+.std p{color:var(--slate);font-size:1rem;margin-top:.5rem}
+@media (max-width:900px){.std-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.std-grid{grid-template-columns:1fr}}
+
+/* Contact */
+.contact{background:var(--mist)}
+.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:4rem;align-items:start}
+.contact-info .lede{margin-top:1.25rem}
+.details{margin-top:2.25rem;border-top:2px solid var(--midnight)}
+.details div{padding:1.1rem 0;border-bottom:1px solid var(--line)}
+.details dt{font-size:.88rem;color:var(--slate)}
+.details dd{margin:.2rem 0 0;font-weight:600;font-size:1.05rem}
+.details a{text-decoration:none}
+.details a:hover{text-decoration:underline}
+.urgent{margin-top:1.75rem;padding:1.25rem 1.4rem;background:var(--midnight);color:#C3CCD7;font-size:.95rem;border-left:4px solid var(--brass)}
+.urgent strong{color:var(--white)}
+form{background:var(--white);padding:2.5rem;border-top:4px solid var(--brass)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+.field{margin-bottom:1.25rem}
+label{display:block;font-weight:600;font-size:.95rem;margin-bottom:.4rem}
+label span{font-weight:400;color:var(--slate)}
+input,select,textarea{width:100%;font:inherit;font-size:1rem;padding:.85rem .9rem;border:1.5px solid #BFC6CF;border-radius:2px;background:var(--white);color:var(--midnight)}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--midnight);box-shadow:0 0 0 3px rgba(180,146,79,.35)}
+textarea{min-height:130px;resize:vertical}
+.seg{display:grid;grid-template-columns:1fr 1fr;border:1.5px solid #BFC6CF;border-radius:2px;overflow:hidden}
+.seg input{position:absolute;opacity:0;width:1px;height:1px}
+.seg label{margin:0;padding:.85rem;text-align:center;font-weight:500;cursor:pointer;transition:background .15s}
+.seg label + input + label{border-left:1.5px solid #BFC6CF}
+.seg input:checked + label{background:var(--midnight);color:var(--white)}
+.seg input:focus-visible + label{outline:3px solid var(--brass);outline-offset:-3px}
+.err-msg{display:none;color:var(--err);font-size:.88rem;margin-top:.35rem}
+.field.invalid input,.field.invalid select,.field.invalid textarea{border-color:var(--err)}
+.field.invalid .err-msg{display:block}
+.consent{display:flex;gap:.7rem;align-items:flex-start;font-size:.92rem;color:var(--slate);margin:.5rem 0 1.5rem}
+.consent input{width:18px;height:18px;margin-top:.2rem;flex:none}
+.form-note{margin-top:1rem;font-size:.95rem;padding:1rem;display:none}
+.form-note.ok{display:block;background:#E7F3EC;color:var(--ok);border-left:4px solid var(--ok)}
+.form-note.bad{display:block;background:#FBEAE9;color:var(--err);border-left:4px solid var(--err)}
+form .btn{width:100%;padding:1.1rem}
+@media (max-width:900px){.contact-grid{grid-template-columns:1fr;gap:3rem}}
+@media (max-width:560px){.form-row{grid-template-columns:1fr;gap:0}form{padding:1.75rem 1.25rem}}
+
+/* Footer */
+footer{background:var(--midnight);color:#AEB9C6;padding:4rem 0 2rem;font-size:.95rem}
+.foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.1)}
+footer h4{color:var(--white);font:600 1rem/1.2 var(--body);margin:0 0 1rem}
+footer ul{list-style:none;margin:0;padding:0}
+footer li{margin:.5rem 0}
+footer a{text-decoration:none}
+footer a:hover{color:var(--white)}
+.foot-brand p{margin-top:1.25rem;max-width:40ch}
+.legal{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;padding-top:1.75rem;font-size:.85rem}
+@media (max-width:800px){.foot-grid{grid-template-columns:1fr;gap:2rem}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="officer" viewBox="0 0 60 170">
+      <circle cx="30" cy="16" r="10" fill="currentColor" stroke="#B4924F" stroke-opacity=".55" stroke-width="1"/>
+      <path d="M13 35Q30 28 47 35L51 92 45 94 42 70 41 102H19L18 70 15 94 9 92Z" fill="currentColor" stroke="#B4924F" stroke-opacity=".55" stroke-width="1"/>
+      <path d="M19 101H41L40 167H32L30 114 28 167H20Z" fill="currentColor" stroke="#B4924F" stroke-opacity=".4" stroke-width="1"/>
+      <path d="M38 19q5 8 1 22" fill="none" stroke="#D4B77E" stroke-width="1.2"/>
+      <rect x="21" y="44" width="6" height="8" fill="#B4924F" opacity=".85"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="site-header">
+  <nav class="wrap nav" aria-label="Main">
+    <a href="#top" class="brand" aria-label="Valtaris Security Group home">
+      <svg viewBox="0 0 40 46" aria-hidden="true"><path d="M20 1 38 7v15c0 11-7.6 19.6-18 23C9.6 41.6 2 33 2 22V7z" fill="none" stroke="#B4924F" stroke-width="2"/><path d="M11 13h5l4 13 4-13h5l-7 20h-4z" fill="#B4924F"/></svg>
+      <span class="brand-name">VALTARIS<small>SECURITY GROUP</small></span>
+    </a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#who">Who we protect</a></li>
+      <li><a href="#coverage">Coverage</a></li>
+      <li><a href="#standards">Our standards</a></li>
+      <li><a href="#contact" class="btn btn-brass">Request a quote</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+<section class="hero" id="top" style="padding:0">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Protection that stays on post, day and night.</h1>
+      <p class="lede">Valtaris Security Group provides licensed security officers, door supervisors and close protection for businesses and private clients across the United Kingdom.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-brass">Request a quote</a>
+        <a href="#services" class="btn btn-ghost">View our services</a>
+      </div>
+      <div class="trust">
+        <span><svg viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l1.1-1.1 2.1 2.1 5.1-5.1L12.7 5z"/></svg>SIA-licensed officers</span>
+        <span><svg viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l1.1-1.1 2.1 2.1 5.1-5.1L12.7 5z"/></svg>Cover across all UK nations</span>
+        <span><svg viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l1.1-1.1 2.1 2.1 5.1-5.1L12.7 5z"/></svg>Available 24 hours a day</span>
+      </div>
+    </div>
+
+    <aside class="duty" aria-label="Operations status">
+      <div class="duty-head">
+        <p>Operations desk, UK time</p>
+        <span class="status"><i aria-hidden="true"></i>On duty</span>
+      </div>
+      <div class="clock" id="clock" aria-live="off">--:--</div>
+      <p class="clock-sub" id="clock-date">&nbsp;</p>
+      <div class="shift" role="list" aria-label="Shift pattern">
+        <div role="listitem" data-shift="day"><strong>Day</strong>06:00–14:00</div>
+        <div role="listitem" data-shift="late"><strong>Late</strong>14:00–22:00</div>
+        <div role="listitem" data-shift="night"><strong>Night</strong>22:00–06:00</div>
+      </div>
+      <p class="duty-foot">Whatever the hour, someone answers. <a href="#contact">Talk to us now</a></p>
+    </aside>
+  </div>
+</section>
+
+<section class="on-post" aria-labelledby="on-post-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="on-post-title">On post, wherever you need us.</h2>
+      <p class="lede">Commercial entrances, late-night venues and empty sites after dark. Our officers are there so you don't have to be.</p>
+    </div>
+    <div class="mosaic">
+      <figure class="ph big">
+        <img src="https://images.unsplash.com/photo-1485230405346-71acb9518d9c?auto=format&fit=crop&w=1800&q=75" alt="Security officer on duty in the entrance foyer of an office building" loading="lazy" onerror="this.remove()">
+        <svg viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs>
+            <linearGradient id="s1sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#08111E"/><stop offset="1" stop-color="#1E3352"/></linearGradient>
+            <pattern id="s1win" width="48" height="40" patternUnits="userSpaceOnUse"><rect x="8" y="8" width="32" height="22" fill="#22385A"/></pattern>
+            <radialGradient id="s1glow" cx=".5" cy="1" r=".8"><stop offset="0" stop-color="#F2D9A6" stop-opacity=".55"/><stop offset="1" stop-color="#F2D9A6" stop-opacity="0"/></radialGradient>
+          </defs>
+          <rect width="600" height="400" fill="url(#s1sky)"/>
+          <rect x="40" y="30" width="520" height="312" fill="#14263E"/>
+          <rect x="40" y="30" width="520" height="190" fill="url(#s1win)"/>
+          <g fill="#D4B77E" opacity=".75"><rect x="56" y="78" width="32" height="22"/><rect x="200" y="38" width="32" height="22"/><rect x="392" y="118" width="32" height="22"/><rect x="488" y="78" width="32" height="22"/><rect x="152" y="158" width="32" height="22"/><rect x="440" y="38" width="32" height="22"/></g>
+          <rect x="140" y="250" width="320" height="92" fill="url(#s1glow)"/>
+          <rect x="230" y="232" width="140" height="110" fill="#F2D9A6" opacity=".92"/>
+          <path d="M300 232V342M265 232V342M335 232V342" stroke="#14263E" stroke-width="4"/>
+          <rect x="210" y="222" width="180" height="12" fill="#0B1626"/>
+          <rect y="342" width="600" height="58" fill="#0A1320"/>
+          <rect x="230" y="344" width="140" height="40" fill="#F2D9A6" opacity=".12"/>
+          <use href="#officer" x="388" y="188" width="62" height="175" style="color:#060D17"/>
+          <ellipse cx="419" cy="364" rx="30" ry="4" fill="#000" opacity=".4"/>
+        </svg>
+        <figcaption>Commercial guarding</figcaption>
+      </figure>
+      <figure class="ph">
+        <img src="https://images.unsplash.com/photo-1529747598642-d0b4e3667314?auto=format&fit=crop&w=1000&q=75" alt="Security officer wearing an earpiece on duty at an event" loading="lazy" onerror="this.remove()">
+        <svg viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs>
+            <pattern id="s2brick" width="40" height="20" patternUnits="userSpaceOnUse"><path d="M0 19.5H40M20 0V10M0 10H40M0 10V20" stroke="#232B3D" stroke-width="1"/></pattern>
+            <linearGradient id="s2spill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E9B97A" stop-opacity=".5"/><stop offset="1" stop-color="#E9B97A" stop-opacity="0"/></linearGradient>
+          </defs>
+          <rect width="600" height="400" fill="#1A2233"/>
+          <rect width="600" height="330" fill="url(#s2brick)"/>
+          <rect x="230" y="62" width="150" height="30" rx="4" fill="none" stroke="#D4B77E" stroke-width="8" opacity=".25"/>
+          <rect x="230" y="62" width="150" height="30" rx="4" fill="none" stroke="#F0D9A8" stroke-width="3"/>
+          <rect x="250" y="112" width="110" height="218" fill="#3A2A2E"/>
+          <rect x="262" y="124" width="86" height="194" fill="#E9B97A" opacity=".35"/>
+          <polygon points="250,330 360,330 450,400 160,400" fill="url(#s2spill)"/>
+          <circle cx="215" cy="150" r="7" fill="#F0D9A8"/><circle cx="395" cy="150" r="7" fill="#F0D9A8"/>
+          <rect y="330" width="600" height="70" fill="#10161F" opacity=".85"/>
+          <g fill="#B4924F"><rect x="120" y="290" width="6" height="60"/><rect x="200" y="290" width="6" height="60"/><circle cx="123" cy="288" r="6"/><circle cx="203" cy="288" r="6"/></g>
+          <path d="M126 300Q164 326 200 300" fill="none" stroke="#8A2F3A" stroke-width="5"/>
+          <use href="#officer" x="370" y="178" width="58" height="165" style="color:#060B12"/>
+        </svg>
+        <figcaption>Event and door security</figcaption>
+      </figure>
+      <figure class="ph">
+        <img src="https://images.unsplash.com/photo-1788109586884-f29af9021d8c?auto=format&fit=crop&w=1000&q=75" alt="Security officer in a reflective vest patrolling a container yard" loading="lazy" onerror="this.remove()">
+        <svg viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs>
+            <linearGradient id="s3sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#050B14"/><stop offset="1" stop-color="#18294A"/></linearGradient>
+            <pattern id="s3mesh" width="14" height="14" patternUnits="userSpaceOnUse"><path d="M0 0L14 14M14 0L0 14" stroke="#3A4C66" stroke-width="1"/></pattern>
+            <linearGradient id="s3beam" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FFF4D6" stop-opacity=".6"/><stop offset="1" stop-color="#FFF4D6" stop-opacity="0"/></linearGradient>
+          </defs>
+          <rect width="600" height="400" fill="url(#s3sky)"/>
+          <circle cx="500" cy="70" r="22" fill="#E8E2D2" opacity=".85"/>
+          <path d="M0 210H120V150L200 120 280 150V210H600V330H0Z" fill="#0F1B2D"/>
+          <rect y="200" width="600" height="120" fill="url(#s3mesh)"/>
+          <path d="M0 200H600" stroke="#5A6E8A" stroke-width="3"/>
+          <g fill="#5A6E8A"><rect x="80" y="196" width="5" height="130"/><rect x="260" y="196" width="5" height="130"/><rect x="440" y="196" width="5" height="130"/></g>
+          <rect y="320" width="600" height="80" fill="#0A1220"/>
+          <path d="M380 268H510L548 300V340H380Z" fill="#1F2F47"/>
+          <path d="M470 274H506L534 300H470Z" fill="#3B5276"/>
+          <rect x="380" y="310" width="168" height="7" fill="#B4924F"/>
+          <circle cx="412" cy="342" r="15" fill="#05090F"/><circle cx="516" cy="342" r="15" fill="#05090F"/>
+          <polygon points="196,262 380,330 380,392 196,270" fill="url(#s3beam)"/>
+          <use href="#officer" x="150" y="190" width="58" height="165" style="color:#03070D"/>
+        </svg>
+        <figcaption>Site patrols</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Security services built around your site.</h2>
+      <p class="lede">Every assignment starts with how your premises, people and risks actually work. We then put the right trained officer in the right place.</p>
+    </div>
+    <div class="svc-list">
+      <article class="svc">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 4 34 9v10c0 9-6 15.5-14 18C12 34.5 6 28 6 19V9z"/><circle cx="20" cy="17" r="4"/><path d="M13 28c1.5-3.5 4-5 7-5s5.5 1.5 7 5"/></svg>
+        <div><h3>Manned guarding</h3><p>Uniformed officers for offices, construction sites, warehouses and retail, with patrol routes and incident reporting agreed with you.</p></div>
+      </article>
+      <article class="svc">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="4" width="22" height="32"/><circle cx="25" cy="21" r="1.5" fill="currentColor"/><path d="M4 36h32"/></svg>
+        <div><h3>Door supervision</h3><p>Licensed door supervisors for bars, clubs, venues and private functions, managing entry, crowd safety and conflict calmly.</p></div>
+      </article>
+      <article class="svc">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2"><circle cx="15" cy="12" r="5"/><path d="M5 34c0-6 4.5-10 10-10s10 4 10 10"/><path d="M28 10l6 2v6c0 4-2.5 7-6 8-3.5-1-6-4-6-8v-6z"/></svg>
+        <div><h3>Close protection</h3><p>Discreet personal protection for executives, high-profile individuals and families, at home, at work and while travelling.</p></div>
+      </article>
+      <article class="svc">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 26V18l4-7h16l6 7h6v8z"/><circle cx="11" cy="27" r="3.5"/><circle cx="29" cy="27" r="3.5"/><path d="M14 4h6"/></svg>
+        <div><h3>Mobile patrols and key holding</h3><p>Scheduled and random patrols, lock and unlock services, and alarm response so you don't have to attend at 3am.</p></div>
+      </article>
+      <article class="svc">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 34V14l14-9 14 9v20z"/><path d="M15 34V22h10v12"/></svg>
+        <div><h3>Residential security</h3><p>Officers and patrols for private homes, gated developments and residential blocks, including overnight and holiday cover.</p></div>
+      </article>
+      <article class="svc">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 32h28M10 32V16h20v16"/><path d="M14 16v-4a6 6 0 0 1 12 0v4"/><path d="M17 24h6"/></svg>
+        <div><h3>Concierge and front of house</h3><p>Security-trained reception staff who welcome visitors, manage access control and keep buildings running smoothly.</p></div>
+      </article>
+      <article class="svc">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h24l4 6-4 6H4z"/><path d="M32 18h4M10 24v10"/></svg>
+        <div><h3>Event security</h3><p>Stewarding and security for concerts, corporate events, weddings and private parties, from a single officer to a full team.</p></div>
+      </article>
+      <article class="svc">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 10h22l-3 10H8z"/><path d="M16 20v6h-6M27 15l8-3"/><circle cx="32" cy="30" r="4"/></svg>
+        <div><h3>CCTV and remote monitoring</h3><p>Monitoring of your cameras and alarms, with officers dispatched to verified activations.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="who" id="who">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>For businesses and for individuals.</h2>
+      <p class="lede">A head office and a family home need very different things. We plan each one separately.</p>
+    </div>
+    <div class="who-grid">
+      <article class="who-card">
+        <figure class="ph">
+          <img src="https://images.unsplash.com/photo-1652739758426-56a564265f9e?auto=format&fit=crop&w=1200&q=75" alt="Uniformed security officer patrolling a commercial street" loading="lazy" onerror="this.remove()">
+          <svg viewBox="0 0 600 340" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <defs><linearGradient id="s4win" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#BFD0E2"/><stop offset="1" stop-color="#E6EDF4"/></linearGradient></defs>
+            <rect width="600" height="340" fill="#E4E8ED"/>
+            <rect x="0" y="0" width="230" height="270" fill="url(#s4win)"/>
+            <path d="M0 200H30V150H60V180H95V120H130V170H160V140H200V200H230V270H0Z" fill="#A9BACD"/>
+            <path d="M76 0V270M153 0V270M0 90H230" stroke="#8C98A8" stroke-width="5"/>
+            <path d="M420 70l26 9v22c0 16-11 28-26 33-15-5-26-17-26-33V79z" fill="none" stroke="#B4924F" stroke-width="3"/>
+            <path d="M407 88h7l6 19 6-19h7l-10 28h-6z" fill="#B4924F"/>
+            <path d="M340 0V30M500 0V30" stroke="#42536A" stroke-width="2"/><circle cx="340" cy="36" r="7" fill="#F2D9A6"/><circle cx="500" cy="36" r="7" fill="#F2D9A6"/>
+            <rect y="270" width="600" height="70" fill="#CBD2DA"/>
+            <use href="#officer" x="388" y="148" width="64" height="182" style="color:#0E1A2B"/>
+            <rect x="300" y="228" width="240" height="112" fill="#0E1A2B"/>
+            <rect x="300" y="222" width="240" height="8" fill="#B4924F"/>
+            <ellipse cx="575" cy="215" rx="22" ry="45" fill="#3F6B57"/><ellipse cx="560" cy="235" rx="14" ry="30" fill="#4F7D66"/>
+            <rect x="557" y="255" width="34" height="40" fill="#42536A"/>
+          </svg>
+        </figure>
+        <h3>Businesses</h3>
+        <p>Reliable officers who know your site, report clearly and represent your brand well.</p>
+        <ul>
+          <li>Offices and multi-tenanted commercial buildings</li>
+          <li>Retail, shopping centres and loss prevention</li>
+          <li>Construction sites and vacant properties</li>
+          <li>Warehouses, logistics and industrial units</li>
+          <li>Hospitality, bars and licensed venues</li>
+        </ul>
+      </article>
+      <article class="who-card alt">
+        <figure class="ph">
+          <img src="https://images.unsplash.com/photo-1760228604788-db8a36d5c1a3?auto=format&fit=crop&w=1200&q=75" alt="Security officer watching over a private gathering under a marquee" loading="lazy" onerror="this.remove()">
+          <svg viewBox="0 0 600 340" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <defs><linearGradient id="s5sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#22324D"/><stop offset=".75" stop-color="#7D6A5A"/><stop offset="1" stop-color="#C59A5E"/></linearGradient></defs>
+            <rect width="600" height="340" fill="url(#s5sky)"/>
+            <path d="M0 230V120H50V80H110V140H170V60H240V150H300V100H360V170H420V70H480V130H540V90H600V230Z" fill="#1A2740" opacity=".9"/>
+            <rect y="270" width="600" height="70" fill="#151D2B"/>
+            <use href="#officer" x="330" y="122" width="62" height="176" style="color:#5C6D85"/>
+            <path d="M80 280L110 236Q140 214 200 212H350Q400 215 440 244L510 256Q530 260 530 284V300H80Z" fill="#070C15"/>
+            <path d="M140 238Q160 222 200 220H285V240Z" fill="#34465F"/>
+            <path d="M295 220H350Q385 224 412 242H295Z" fill="#34465F"/>
+            <path d="M300 222L262 206V286L300 298Z" fill="#0D1522" stroke="#8C98A8" stroke-width="1.5"/>
+            <circle cx="150" cy="300" r="23" fill="#03060B"/><circle cx="450" cy="300" r="23" fill="#03060B"/>
+            <circle cx="150" cy="300" r="9" fill="#42536A"/><circle cx="450" cy="300" r="9" fill="#42536A"/>
+            <use href="#officer" x="206" y="132" width="64" height="182" style="color:#03070D"/>
+          </svg>
+        </figure>
+        <h3>Individuals and families</h3>
+        <p>Private, discreet protection that fits around your routine rather than taking it over.</p>
+        <ul>
+          <li>Close protection for executives and public figures</li>
+          <li>Residential guarding and overnight cover</li>
+          <li>Travel and event accompaniment</li>
+          <li>Security for private functions and weddings</li>
+          <li>Home checks while you are away</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>From first call to officer on site.</h2>
+      <p class="lede">A clear, short process so you know what happens next and when.</p>
+    </div>
+    <ol class="steps">
+      <li><h3>Tell us what you need</h3><p>Call or send the enquiry form. We'll ask about your site, hours and concerns.</p></li>
+      <li><h3>Site assessment</h3><p>We review the risks, in person or remotely, and agree what good cover looks like.</p></li>
+      <li><h3>Your security plan</h3><p>You receive a written proposal with staffing, duties and a fixed price.</p></li>
+      <li><h3>Deployment and review</h3><p>Briefed officers start on the agreed date, and we review performance with you regularly.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="coverage" id="coverage">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Cover across the whole United Kingdom.</h2>
+      <p class="lede">We deploy officers nationwide, from city-centre offices to rural sites, with the same standards in every region.</p>
+    </div>
+    <div class="regions">
+      <div class="region"><h3>England</h3><p>London, Birmingham, Manchester, Leeds, Liverpool, Bristol, Newcastle and surrounding areas.</p></div>
+      <div class="region"><h3>Scotland</h3><p>Glasgow, Edinburgh, Aberdeen, Dundee and the Highlands.</p></div>
+      <div class="region"><h3>Wales</h3><p>Cardiff, Swansea, Newport and across North and South Wales.</p></div>
+      <div class="region"><h3>Northern Ireland</h3><p>Belfast, Derry, Lisburn and the wider province.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="standards" id="standards">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>The standards behind every shift.</h2>
+      <p class="lede">You should know exactly who is protecting your premises and how they were chosen.</p>
+    </div>
+    <div class="std-grid">
+      <div class="std">
+        <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="8" width="28" height="20" rx="2"/><circle cx="13" cy="17" r="3.5"/><path d="M21 15h7M21 20h5"/></svg>
+        <h3>Licensed</h3><p>Every front-line officer holds a valid Security Industry Authority licence for their role.</p>
+      </div>
+      <div class="std">
+        <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2"><circle cx="16" cy="16" r="10"/><path d="m23.5 23.5 8 8"/></svg>
+        <h3>Vetted</h3><p>Staff are screened in line with BS 7858, including identity, right-to-work and employment history checks.</p>
+      </div>
+      <div class="std">
+        <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="5" width="26" height="26" rx="3"/><path d="M18 11v14M11 18h14"/></svg>
+        <h3>First-aid trained</h3><p>Officers are trained in emergency first aid so they can respond while help is on the way.</p>
+      </div>
+      <div class="std">
+        <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 4 30 9v8c0 8-5 13-12 15C11 30 6 25 6 17V9z"/><path d="m13 18 4 4 7-8"/></svg>
+        <h3>Fully insured</h3><p>Public and employer's liability insurance is in place for every assignment we take on.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div class="contact-info">
+      <h2>Request a security quote.</h2>
+      <p class="lede">Tell us about your site or situation. We reply to every enquiry within one working day.</p>
+      <dl class="details">
+        <div><dt>Contact</dt><dd>Mohammad Aakash</dd></div>
+        <div><dt>Phone</dt><dd><a href="tel:+447445294972">+44 7445 294972</a></dd></div>
+        <div><dt>Email</dt><dd><a href="mailto:muhammadaakash249@gmail.com">muhammadaakash249@gmail.com</a></dd></div>
+        <div><dt>Office</dt><dd>London, United Kingdom</dd></div>
+      </dl>
+      <p class="urgent"><strong>Need cover tonight?</strong> Call us directly for urgent and same-day deployments.</p>
+    </div>
+
+    <form id="quote-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+      <div class="field">
+        <label id="type-label">I'm enquiring as</label>
+        <div class="seg" role="radiogroup" aria-labelledby="type-label">
+          <input type="radio" id="t-biz" name="client_type" value="Business" checked><label for="t-biz">A business</label>
+          <input type="radio" id="t-ind" name="client_type" value="Individual"><label for="t-ind">An individual</label>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field">
+          <label for="name">Full name</label>
+          <input id="name" name="name" autocomplete="name" required>
+          <p class="err-msg">Enter your full name.</p>
+        </div>
+        <div class="field" id="company-field">
+          <label for="company">Company <span>(optional)</span></label>
+          <input id="company" name="company" autocomplete="organization">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" required>
+          <p class="err-msg">Enter an email address like name@example.com.</p>
+        </div>
+        <div class="field">
+          <label for="phone">Phone</label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel" required>
+          <p class="err-msg">Enter a phone number so we can call you back.</p>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field">
+          <label for="service">Service needed</label>
+          <select id="service" name="service" required>
+            <option value="">Choose a service</option>
+            <option>Manned guarding</option>
+            <option>Door supervision</option>
+            <option>Close protection</option>
+            <option>Mobile patrols and key holding</option>
+            <option>Residential security</option>
+            <option>Concierge and front of house</option>
+            <option>Event security</option>
+            <option>CCTV and remote monitoring</option>
+            <option>Not sure yet</option>
+          </select>
+          <p class="err-msg">Choose a service, or pick "Not sure yet".</p>
+        </div>
+        <div class="field">
+          <label for="location">Site town or postcode</label>
+          <input id="location" name="location" autocomplete="postal-code" required>
+          <p class="err-msg">Tell us where the cover is needed.</p>
+        </div>
+      </div>
+      <div class="field">
+        <label for="message">Tell us more <span>(dates, hours, number of officers)</span></label>
+        <textarea id="message" name="message"></textarea>
+      </div>
+      <label class="consent"><input type="checkbox" id="consent" name="consent" required>I agree to Valtaris Security Group contacting me about this enquiry.</label>
+      <button type="submit" class="btn btn-brass">Send enquiry</button>
+      <p class="form-note" id="form-note" role="status"></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#top" class="brand" aria-label="Valtaris Security Group home">
+          <svg viewBox="0 0 40 46" width="34" height="40" aria-hidden="true"><path d="M20 1 38 7v15c0 11-7.6 19.6-18 23C9.6 41.6 2 33 2 22V7z" fill="none" stroke="#B4924F" stroke-width="2"/><path d="M11 13h5l4 13 4-13h5l-7 20h-4z" fill="#B4924F"/></svg>
+          <span class="brand-name" style="color:#fff">VALTARIS<small>SECURITY GROUP</small></span>
+        </a>
+        <p>Private security for businesses and individuals across England, Scotland, Wales and Northern Ireland.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Manned guarding</a></li>
+          <li><a href="#services">Door supervision</a></li>
+          <li><a href="#services">Close protection</a></li>
+          <li><a href="#services">Residential security</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>Mohammad Aakash</li>
+          <li><a href="tel:+447445294972">+44 7445 294972</a></li>
+          <li><a href="mailto:muhammadaakash249@gmail.com">muhammadaakash249@gmail.com</a></li>
+          <li><a href="#contact">Request a quote</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <p>&copy; <span id="year">2026</span> Valtaris Security Group Ltd. Registered in England and Wales, company no. 00000000.</p>
+      <p>Photos: Unsplash &nbsp; <a href="#">Privacy policy</a> &nbsp; <a href="#">Terms</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Mobile menu
+const menuBtn=document.querySelector('.menu-btn'),links=document.getElementById('nav-links');
+menuBtn.addEventListener('click',()=>{const o=links.classList.toggle('open');menuBtn.setAttribute('aria-expanded',o);menuBtn.setAttribute('aria-label',o?'Close menu':'Open menu')});
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{links.classList.remove('open');menuBtn.setAttribute('aria-expanded','false')}));
+
+// UK time clock and current shift
+const clock=document.getElementById('clock'),dateEl=document.getElementById('clock-date');
+function tick(){
+  const now=new Date();
+  const t=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/London',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).format(now);
+  clock.textContent=t;
+  dateEl.textContent=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/London',weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(now);
+  const h=parseInt(t.slice(0,2),10);
+  const s=h>=6&&h<14?'day':h>=14&&h<22?'late':'night';
+  document.querySelectorAll('.shift [data-shift]').forEach(d=>d.classList.toggle('now',d.dataset.shift===s));
+}
+tick();setInterval(tick,1000);
+document.getElementById('year').textContent=new Date().getFullYear();
+
+// Hide company field for individuals
+const companyField=document.getElementById('company-field');
+document.querySelectorAll('input[name="client_type"]').forEach(r=>r.addEventListener('change',()=>{
+  companyField.style.visibility=document.getElementById('t-ind').checked?'hidden':'visible';
+}));
+
+// Form validation and submission
+const form=document.getElementById('quote-form'),note=document.getElementById('form-note');
+function validate(){
+  let ok=true,first=null;
+  form.querySelectorAll('[required]').forEach(el=>{
+    if(el.type==='checkbox')return;
+    const valid=el.type==='email'?/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim()):el.value.trim()!=='';
+    el.closest('.field').classList.toggle('invalid',!valid);
+    el.setAttribute('aria-invalid',!valid);
+    if(!valid){ok=false;first=first||el}
+  });
+  if(first)first.focus();
+  return ok;
+}
+form.querySelectorAll('input,select').forEach(el=>el.addEventListener('input',()=>{const f=el.closest('.field');if(f&&f.classList.contains('invalid'))validate()}));
+form.addEventListener('submit',async e=>{
+  e.preventDefault();
+  note.className='form-note';
+  if(!validate()){note.textContent='Check the highlighted fields and try again.';note.classList.add('bad');return}
+  if(!document.getElementById('consent').checked){note.textContent='Tick the consent box so we can reply to your enquiry.';note.classList.add('bad');return}
+  const btn=form.querySelector('button');btn.disabled=true;btn.textContent='Sending…';
+  try{
+    if(form.action.includes('YOUR_FORM_ID'))throw new Error('placeholder');
+    const res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
+    if(!res.ok)throw new Error('failed');
+    form.reset();companyField.style.visibility='visible';
+    note.textContent='Enquiry sent. We’ll contact you within one working day.';note.classList.add('ok');
+  }catch(err){
+    note.textContent='The form isn’t connected yet. Email muhammadaakash249@gmail.com or call us instead.';note.classList.add('bad');
+  }finally{btn.disabled=false;btn.textContent='Send enquiry'}
+});
+</script>
+</body>
+</html>
